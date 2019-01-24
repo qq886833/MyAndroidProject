@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+************************************************************************
+*History:
+*
+*1.Id:none 咨询聊天 chenkai 20170916
+*  Description: create
+*
+************************************************************************
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <solid android:color="#c0767676" />
+
+    <corners android:radius="5dp" />
+
+</shape>

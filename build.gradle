@@ -25,3 +25,12 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+
+project.ext.set("minSdkVersion", "19")
+project.ext.set("targetSdkVersion", "28")
+project.ext.set("androidSupportVersion", "27.1.0")
+project.ext.set("compileSdkVersion", "28")
+project.ext.set("buildToolsVersion", "28.0.2")
+project.ext.set("versionCode", "10001")
+project.ext.set("versionName", "1.0.0.01")
