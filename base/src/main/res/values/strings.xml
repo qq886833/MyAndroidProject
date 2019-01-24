@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">base</string>
+
+
+
+    <!--ic_loading-->
+    <string name="loading">载入中···</string>
+</resources>
