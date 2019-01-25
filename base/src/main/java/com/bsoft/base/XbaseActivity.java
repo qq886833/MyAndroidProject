@@ -24,6 +24,7 @@ import com.bsoft.utils.EffectUtil;
 import com.bsoft.utils.ExitUtil;
 import com.bsoft.utils.LiveDataBus;
 import com.bsoft.utils.StringUtil;
+
 import com.bsoft.widget.loading.LoadViewHelper;
 
 import java.util.List;
@@ -37,7 +38,8 @@ public abstract  class XbaseActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         this.application = (AppApplication) getApplication();
         this.baseActivity = this;
-
+//        StatusBarUtils.setStatusBar(this, false, false);
+//        StatusUtil.setColor(baseActivity,getResources().getColor(R.color.colorPrimary));
         LiveDataBus.get().with(Constants.Logout_ACTION, PushInfo.class)
                 .observe(this, new Observer<PushInfo>() {
                     @Override
