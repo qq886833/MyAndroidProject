@@ -20,4 +20,11 @@ colorAccent—控件选中后颜色-->
     <color name="white">#FFFFFF</color><!--白色-->
     <color name="selectbg">#f2f2f2</color>
     <color name="image_backgroud">#cccccc</color>
+
+
+
+
+
+
+
 </resources>

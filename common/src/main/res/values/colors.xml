@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources >
 
     <color name="transparent">#00000000</color>
     <color name="line">#e4e4e4</color>
     <color name="black">#000000</color><!--黑色 -->
     <color name="deepskyblue">#00bfff</color><!--深天蓝色 -->
+    <color name="theme_bule">#09ABF5</color>
     <color name="red">#ff0000</color><!--红色 -->
+    <color name="text_hint_color">#9f9f9f</color>
+    <color name="orange">#fb9925</color><!--橙色 -->
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="sex_not_know">未知性别</string>
+    <color name="darkorange">#ff8c00</color><!--暗桔黄色 -->
 </resources>

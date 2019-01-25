@@ -3,5 +3,16 @@
 
     <dimen name="dp0">0dp</dimen>
     <dimen name="dip_15">15dip</dimen>
+    <dimen name="small_round">4dp</dimen>
 
+    <!--textzie的大小-->
+    <dimen name="textsize_micro">12sp</dimen>
+    <dimen name="textsize_small">14sp</dimen>
+    <dimen name="textsize_medium">16sp</dimen>
+    <dimen name="textsize_large">18sp</dimen>
+
+    <!--间隔线的高度-->
+    <dimen name="line_height">0.5dp</dimen>
+
+    <dimen name="button48">48dp</dimen>
 </resources>
