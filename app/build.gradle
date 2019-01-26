@@ -43,7 +43,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:support-v4:$project.androidSupportVersion"
+  //  implementation "com.android.support:support-v4:$project.androidSupportVersion"
     implementation "com.android.support:appcompat-v7:$project.androidSupportVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
@@ -51,6 +51,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
     api project(':network_api')
-  //  api project(':common')
-    implementation project(':module_main')
+    //  api project(':common')
+    api project(':business:module_main')
 }

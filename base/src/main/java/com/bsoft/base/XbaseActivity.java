@@ -30,7 +30,7 @@ import com.bsoft.widget.loading.LoadViewHelper;
 import java.util.List;
 
 public abstract  class XbaseActivity extends BaseActivity {
-    public BaseActivity baseActivity;
+    public XbaseActivity baseActivity;
     public LoadViewHelper viewHelper;
     public AppApplication application;
     @Override
