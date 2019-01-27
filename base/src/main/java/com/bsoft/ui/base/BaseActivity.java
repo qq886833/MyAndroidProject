@@ -20,6 +20,7 @@ import com.bsoft.widget.loading.LoadViewHelper;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
+
 public abstract class BaseActivity extends RxAppCompatActivity {
 
     LoadingDialog loadingDialog;

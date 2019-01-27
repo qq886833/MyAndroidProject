@@ -183,7 +183,7 @@
 
 #自己包下
 #不要混淆该类所有子类的属性与方法
--keepclasseswithmembers class * extends com.bsoft.lib_common.model.AbsBaseVo{
+-keepclasseswithmembers class * extends com.bsoft.bean.AbsBaseVo{
     <fields>;
     <methods>;
 }
@@ -335,10 +335,6 @@
 -keep class com.android.**{*;}
 #-assumenosideeffects class_specification
 
-#v7 不混淆
--keep class android.support.v7.** { *; }
--keep interface android.support.v7.** { *; }
--dontwarn android.support.v7.**
 
 # support-design
 -dontwarn android.support.design.**

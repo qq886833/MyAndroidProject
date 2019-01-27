@@ -54,7 +54,7 @@ public class ConstantUrl {
     public static final String COORDINATORTABLAYOUT = "/demotest/view/coordinatortablayout";
 
 
-
+    public static final String NDK = "/nndk/ndk";
 
 
 

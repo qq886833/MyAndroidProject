@@ -10,6 +10,7 @@ import com.bsoft.config.AppContext;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
+
 public class BaseFragment extends RxFragment {
 
 

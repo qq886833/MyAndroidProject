@@ -1,4 +1,4 @@
-package com.bsoft.common.widget;
+package com.bsoft.common.utils;
 
 
 import android.content.Context;

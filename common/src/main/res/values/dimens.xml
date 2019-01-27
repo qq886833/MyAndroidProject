@@ -4,4 +4,6 @@
     <dimen name="dp0">0dp</dimen>
     <dimen name="dip_15">15dip</dimen>
 
+
+    <dimen name="small_round">4dp</dimen>
 </resources>

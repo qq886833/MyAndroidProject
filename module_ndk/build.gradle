@@ -1,14 +1,17 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion Integer.parseInt(project.compileSdkVersion)
     buildToolsVersion project.buildToolsVersion
     defaultConfig {
-        applicationId "com.bsoft.componentX"
         minSdkVersion Integer.parseInt(project.minSdkVersion)
         targetSdkVersion Integer.parseInt(project.targetSdkVersion)
         versionCode 1
         versionName "1.0"
+
+        ndk{
+            moduleName="hello"
+        }
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
@@ -22,6 +25,7 @@ android {
             }
         }
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -33,26 +37,18 @@ android {
             path "CMakeLists.txt"
         }
     }
-
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['libs']
-        }
-    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //  implementation "com.android.support:support-v4:$project.androidSupportVersion"
     implementation "com.android.support:appcompat-v7:$project.androidSupportVersion"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+  //  implementation 'com.alibaba:arouter-api:1.3.1'
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
     api project(':network_api')
-    //  api project(':common')
-    api project(':business:module_main')
-    implementation project(':fuction:module_splash')
-    implementation project(':module_ndk')
+    api project(':common')
 }

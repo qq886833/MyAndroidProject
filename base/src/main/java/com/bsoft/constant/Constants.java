@@ -28,8 +28,8 @@ public class Constants {
 
 
 
-
-
+    public static final String Login_State = "loginState";
+    public static final String Login_User = "loginUser";
     // 退出
     public static final String Logout_ACTION = APPLICATION_ID + ".logout.action";
 

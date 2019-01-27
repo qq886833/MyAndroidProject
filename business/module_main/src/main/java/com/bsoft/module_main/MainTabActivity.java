@@ -7,10 +7,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.util.ArrayMap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,7 +65,7 @@ public class MainTabActivity extends XbaseActivity {
         super.onCreate(savedInstanceState);
 
         long startTime = System.currentTimeMillis();
-        //  StatusBarUtils.getStatusBarHeight(this);
+
         setContentView(R.layout.activity_main_tab);
         long endTime = System.currentTimeMillis();
         long time = endTime - startTime;
