@@ -1,5 +1,6 @@
 package com.bsoft.base;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.Observer;

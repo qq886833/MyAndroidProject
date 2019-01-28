@@ -33,6 +33,7 @@ import com.bsoft.network_api.net.NetClient;
 import com.bsoft.utils.StringUtil;
 import com.bsoft.utils.TPreferences;
 
+import com.bsoft.utils.barUtil.StatusBarUtil;
 import com.nineoldandroids.view.ViewHelper;
 
 
@@ -74,8 +75,8 @@ public class MainTabActivity extends XbaseActivity {
         this.mInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         isLoad = getIntent().getBooleanExtra("isLoad", isLoad);
 
-
-
+   //     StatusBarUtil.setRootViewFitsSystemWindows(MainTabActivity.this,true);
+        StatusBarUtil.setStatusBarDarkTheme(this,true);
         findView();
         IntentFilter filter = new IntentFilter();
 //        filter.addAction(Constants.HomeMessageCount_ACTION);

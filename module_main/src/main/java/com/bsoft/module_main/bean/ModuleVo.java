@@ -1,4 +1,4 @@
-package com.bsoft.module_main.model;
+package com.bsoft.module_main.bean;
 
 
 

@@ -30,7 +30,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:support-v4:$project.androidSupportVersion"
+  //  implementation "com.android.support:support-v4:$project.androidSupportVersion"
     implementation "com.android.support:appcompat-v7:$project.androidSupportVersion"
     api "com.android.support:recyclerview-v7:$project.androidSupportVersion"
     api "com.android.support:design:$project.androidSupportVersion"

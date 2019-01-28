@@ -23,7 +23,7 @@ import com.bsoft.common.utils.NetworkImageHolderView;
 import com.bsoft.common.widget.WrapViewpager;
 import com.bsoft.common.widget.viewpager.transformer.RoateTransformer;
 import com.bsoft.module_main.R;
-import com.bsoft.module_main.model.ModuleVo;
+import com.bsoft.module_main.bean.ModuleVo;
 import com.bsoft.widget.BsoftActionBar;
 import com.viewpagerindicator.CirclePageIndicator;
 

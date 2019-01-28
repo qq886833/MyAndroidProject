@@ -52,7 +52,8 @@ dependencies {
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
     api project(':network_api')
     //  api project(':common')
-    api project(':business:module_main')
-    implementation project(':fuction:module_splash')
+    api project(':module_main')
+    implementation project(':module_splash')
     implementation project(':module_ndk')
+    implementation project(':module_account')
 }

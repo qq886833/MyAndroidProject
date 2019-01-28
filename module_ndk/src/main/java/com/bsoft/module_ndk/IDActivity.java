@@ -17,7 +17,7 @@ public class IDActivity extends XbaseActivity {
 
 
         TextView  tv = new TextView(this);
-        tv.setText(Test.sayHello());
+     //   tv.setText(Test.sayHello());
     }
 
     @Override

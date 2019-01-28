@@ -19,7 +19,7 @@ import com.bsoft.common.recyleviewadapter.base.ViewHolder;
 import com.bsoft.common.utils.ImageUtil;
 import com.bsoft.common.utils.RecyclerViewUtil;
 import com.bsoft.module_main.R;
-import com.bsoft.module_main.model.ModuleVo;
+import com.bsoft.module_main.bean.ModuleVo;
 import com.bsoft.utils.EffectUtil;
 import com.bsoft.utils.StringUtil;
 import com.facebook.drawee.view.SimpleDraweeView;

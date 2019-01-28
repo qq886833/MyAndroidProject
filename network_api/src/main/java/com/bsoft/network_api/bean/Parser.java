@@ -1,99 +1,125 @@
 package com.bsoft.network_api.bean;
 
-
+import android.content.Intent;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+
+import com.bsoft.config.AppContext;
 import com.bsoft.constant.Constants;
 import com.bsoft.push.PushInfo;
 import com.bsoft.utils.AppLogger;
 import com.bsoft.utils.LiveDataBus;
 import com.orhanobut.logger.Logger;
 
+
+/**
+ * 解析
+ * Created by Administrator on 2016/10/24.
+ */
 public class Parser {
-
-    public static final String CODE = "code";
-    public static final String DATA = "body";
-    public static final String MSG = "msg";
-    public static final String PRO = "properties";
-
+    public final static String CODE = "code";
+    public final static String DATA = "body";
+    public final static String MSG = "msg";
+    public final static String PRO = "properties";
+    
     private static final int LIST = 1;
     private static final int OBJECT = 2;
     private static final int BASE = 3;
+
 
     private Parser() {
 
     }
 
     private static class SingletonHolder {
-        private static final Parser INSTANCE = new Parser();
+        private final static Parser INSTANCE = new Parser();
     }
 
     public static Parser getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
-    /* *
-     *
+
+    public ResultModel parserData(String json, Class clazz) {
+        return parserSpData(json, clazz, DATA, true);
+    }
+
+    
+    private int getDataType(String s) {
+        if(s.startsWith("{")){
+            return OBJECT;
+        }
+        if(s.startsWith("[")){
+            return LIST;
+        }
+        return BASE;
+    }
+
+    /**
+     * 
      * @param json
      * @param clazz
-     * @param dataId data节点 (接口数据节点不统一)
-     * @param needCode 是否需要code判断（有些接口没有返回code）
+     * @param dataId  data节点（接口数据节点不统一(┬＿┬)）
+     * @param needCode  是否需要code判断（有些接口没有code(┬＿┬)）
      * @return
      */
     public ResultModel parserSpData(String json, Class clazz, String dataId, boolean needCode) {
-        if (json != null) {
+        if(json != null) {
             Logger.d(json);
             Logger.json(json);
-        } else {
+        }else{
             AppLogger.e(json);
         }
         ResultModel mList = new ResultModel();
         if (null != json) {
             try {
                 mList.json = json;
-                JSONObject obj = JSON.parseObject(json);
-                int code = getCode(obj);
-                mList.setCode(code);
-                if (obj.containsKey(MSG)) {
-                    mList.message = obj.getString(MSG);
-                }
+                
+                JSONObject ob = JSON.parseObject(json);
                 ResultModel fList = null;
-                fList = doFilter(code, obj);
+                int code = getCode(ob);
+                mList.setCode(code);
+                if (ob.containsKey(MSG)) {
+                    mList.message = ob.getString(MSG);
+                }
+                fList = doFilter(code, ob);
                 if (null != fList) {
                     fList.setCode(code);
                     return fList;
                 }
                 if (code == 200 || !needCode) {
                     mList.statue = Statue.SUCCESS;
-                    if (obj.containsKey(PRO)) {
-                        mList.pro = obj.getString(PRO);
+                    if (ob.containsKey(PRO)) {
+                        mList.pro = ob.getString(PRO);
                     }
-                    if (obj.containsKey(dataId)) {
-                        int type = getDataType(obj.getString(dataId));
+                    if (ob.containsKey(dataId)) {
+                        int type = getDataType(ob.getString(dataId));//"body"
                         switch (type) {
                             case LIST:
-                                mList.data = JSON.parseArray(obj.getString(dataId));
+                                mList.data = JSON.parseArray(ob.getString(dataId), clazz);
                                 break;
                             case OBJECT:
-                                mList.data = JSON.parseObject(obj.getString(dataId));
+                                mList.data = JSON.parseObject(ob.getString(dataId), clazz);
                                 break;
                             case BASE:
-                                mList.data = obj.get(dataId);
+                                mList.data = ob.get(dataId);
                                 break;
+
                         }
+
                         return mList;
                     } else {
-                        if (TextUtils.isEmpty(mList.message)) {
+                        if(TextUtils.isEmpty(mList.message)) {
                             mList.message = "数据为空";
                         }
                         return mList;
                     }
-                } else {
+                }else{
                     mList.statue = Statue.ERROR;
-                    if (obj.containsKey(MSG)) {
-                        mList.message = obj.getString(MSG);
+                    if (ob.containsKey(MSG)) {
+                        mList.message = ob.getString(MSG);
                     }
                     return mList;
                 }
@@ -103,20 +129,10 @@ public class Parser {
 //                mList.data = data;
                 return mList;
             }
-
         }
         return mList;
     }
 
-    private int getDataType(String s) {
-        if (s.startsWith("{")) {
-            return OBJECT;
-        }
-        if (s.startsWith("[")) {
-            return LIST;
-        }
-        return BASE;
-    }
 
     private int getCode(JSONObject ob) {
         if (null != ob) {
@@ -124,8 +140,9 @@ public class Parser {
                 return ob.getIntValue(CODE);
             }
             return -88;
+        } else {
+            return -88;
         }
-        return -88;
     }
 
     private ResultModel doFilter(int code, JSONObject ob) {
@@ -139,27 +156,25 @@ public class Parser {
             return mList;
         }
         if (code == 403) {
-            //TODO  使用LiveDataBus  代替广播
             PushInfo info = new PushInfo();
             info.description = "您的账号在其他设备上登陆,请重新登录!";
             info.title = "提示";
             LiveDataBus.get().with(Constants.Logout_ACTION).postValue(info);
+
             mList = new ResultModel();
             mList.statue = Statue.DEVICEID_ERROR;
-
             return mList;
         }
         if (code == -501) {
-            //TODO
             PushInfo info = new PushInfo();
             info.description = "账号验证失败，请重新登录!";
             info.title = "提示";
+            info.login = 1;
             LiveDataBus.get().with(Constants.Logout_ACTION).postValue(info);
             mList = new ResultModel();
             mList.statue = Statue.DEVICEID_ERROR;
             return mList;
         }
-
         return mList;
     }
 }
